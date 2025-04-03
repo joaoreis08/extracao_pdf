@@ -34,9 +34,10 @@ def gera_excel():
             if numero_decreto:
                 print(f"Decreto encontrado: {numero_decreto.group(1)}")
 
-                data_decreto = re.search(r"DE\s*(\d{2})\s*DE\s*([A-Za-zÁ-Úá-ú]+)\s*DE\s*(\d{4})", linha)
+                data_decreto = re.search(r"s*(\d{1,2})\s*DE\s*([A-Za-zÁ-Úá-ú]+)\s*DE\s*(\d{4})", linha)
                 if data_decreto:
                     dia = data_decreto.group(1)
+                    dia = dia.zfill(2)
                     mes_texto = data_decreto.group(2)
                     ano = data_decreto.group(3)
                     mes_numero = meses.get(mes_texto.upper(), "00")
@@ -80,5 +81,5 @@ def gera_excel():
     else:
         print("DataFrame gerado com sucesso!")
     # Salvar no Excel
-    df.to_excel(r"S:\SEPOC\07.DECRETOS_PL\2025\Acompanhamento Limite LOA 2025\decretos_extraidos.xlsx", index=False)
+    df.to_excel(r"decretos_extraidos.xlsx", index=False)
 
