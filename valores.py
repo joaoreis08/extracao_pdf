@@ -81,5 +81,5 @@ def gera_excel():
     else:
         print("DataFrame gerado com sucesso!")
     # Salvar no Excel
-    df.to_excel(r"decretos_extraidos.xlsx", index=False)
+    df.to_excel(r"S:\SEPOC\07.DECRETOS_PL\2025\Acompanhamento Limite LOA 2025\decretos_extraidos.xlsx", index=False)
 
