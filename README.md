@@ -1,6 +1,12 @@
 # Extração de Dados de PDFs
 
-Este projeto tem como objetivo extrair dados de arquivos PDF usando Python.
+Este projeto foi desenvolvido com o objetivo de extrair dados de decretos de arquivos PDF do Diário de Pernambuco e organizar essas informações em um arquivo Excel.
+
+# Funcionalidades
+
+Extração de Texto: Utiliza bibliotecas Python para extrair texto completo de arquivos PDF.
+Identificação de Decretos: Processa e identifica decretos dentro do texto extraído usando padrões de expressões regulares.
+Exportação para Excel: Organiza os decretos identificados em um DataFrame do Pandas e os exporta para um arquivo Excel (.xlsx).
 
 ## 🚀 Começando
 
