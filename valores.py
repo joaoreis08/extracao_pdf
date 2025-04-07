@@ -89,7 +89,7 @@ def gera_excel():
     if df.empty:
         print("DataFrame está vazio!")
     else:
-        print("DataFrame gerado com sucesso!")
-    # Salvar no Excel
-    df.to_excel(r"S:\SEPOC\07.DECRETOS_PL\2025\Acompanhamento Limite LOA 2025\decretos_extraidos.xlsx", index=False)
+        print("DataFrame gerado com sucesso!")  
+        # Salvar no Excel
+        df.to_excel(r"S:\SEPOC\07.DECRETOS_PL\2025\Acompanhamento Limite LOA 2025\decretos_extraidos.xlsx", index=False)
 
