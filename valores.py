@@ -20,14 +20,22 @@ def gera_excel():
     lista_data = []
     lista_valores = []
     lista_doe = []
+    lista_publicacao = []
 
     for i in range(len(linhas)):
         linha = linhas[i]
         if i == 0:
             num_doe = re.findall(r"N\u00C0\s*(\d+)", linha)
+            data_publicacao = re.search(r"\s*(\d{1,2})\s*de\s*([A-Za-zÁ-Úá-ú]+)\s*de\s*(\d{4})", linha)
             if num_doe:
                 num_doe = num_doe[0]
                 print(f"DOE encontrado: {num_doe}")
+            if data_publicacao:
+                dia_publicacao = data_publicacao.group(1).zfill(2)
+                mes_publicacao = meses.get(data_publicacao.group(2).upper(), "00")
+                ano_publicacao = data_publicacao.group(3)
+                data_de_publicacao = f"{dia_publicacao}/{mes_publicacao}/{ano_publicacao}"
+                print(f"Data de publicação encontrada: {data_de_publicacao}")
 
         if "DECRETO Nº" in linha:
             numero_decreto = re.search(r"DECRETO Nº\s*([\d\.]+)", linha)
@@ -65,16 +73,18 @@ def gera_excel():
                             lista_data.append(data_formatada)
                             lista_valores.append(valor_extraido)
                             lista_doe.append(num_doe)
+                            lista_publicacao.append(data_de_publicacao)
                             break
 
     df = pd.DataFrame({
         "Decretos": lista_decretos,
         "Data_decreto": lista_data,
         "Valores": lista_valores,
-        "Número_DOE": lista_doe
+        "Número_DOE": lista_doe,
+        "Data_publi": data_de_publicacao
     })
 
-    print(f"Listas antes do DataFrame - Decretos: {lista_decretos}, Datas: {lista_data}, Valores: {lista_valores}, DOE: {lista_doe}")
+    print(f"Listas antes do DataFrame - Decretos: {lista_decretos}, Datas: {lista_data}, Valores: {lista_valores}, DOE: {lista_doe}, Data_publi: {data_de_publicacao}")
 
     if df.empty:
         print("DataFrame está vazio!")
