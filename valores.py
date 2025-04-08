@@ -21,6 +21,8 @@ def gera_excel():
     lista_valores = []
     lista_doe = []
     lista_publicacao = []
+    data_de_publicacao = []
+    
 
     for i in range(len(linhas)):
         linha = linhas[i]
